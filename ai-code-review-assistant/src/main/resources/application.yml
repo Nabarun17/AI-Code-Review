@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: ai-code-review-assistant
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/ai_code_review_db?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root123
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+  graphql:
+    graphiql:
+      enabled: true
+
+  ai:
+    openai:
+      api-key: ${HUGGINGFACE_API_KEY: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}
+      base-url: https://api-inference.huggingface.co
+      chat:
+        options:
+          model: meta-llama/Llama-3.2-3B-Instruct
+          temperature: 0.2
+    ollama:
+      base-url: http://localhost:11434
+      chat:
+        options:
+          model: qwen2.5vl:latest
+          temperature: 0.2
